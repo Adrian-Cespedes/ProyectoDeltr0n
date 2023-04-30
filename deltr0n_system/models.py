@@ -10,3 +10,15 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.name
+
+class Cliente(models.Model):
+    DNI = models.CharField(max_length=8, primary_key=True)
+    RUC = models.CharField(max_length=11, blank=True)
+    name = models.CharField(max_length=255)
+    lastname = models.CharField(max_length=255)
+    phone = models.CharField(max_length=9)
+    email = models.EmailField(blank=True)
+    password = models.CharField(max_length=255)
+    def __str__(self):
+        return self.DNI
+
