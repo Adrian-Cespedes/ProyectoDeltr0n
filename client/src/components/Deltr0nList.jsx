@@ -15,7 +15,7 @@ useEffect(() => {
 }, [])
 
   return (
-    <div>
+    <div className='grid grid-cols-3 gap-4'>
         {Productos.map(Productos => (
             <ProductosCard key={Productos.id} Productos={Productos}/>
         ))}

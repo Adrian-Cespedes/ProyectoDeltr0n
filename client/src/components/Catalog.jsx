@@ -1,3 +1,4 @@
+import {Deltr0nList} from './Deltr0nList'
 
 export function Catalog() {
   return (
@@ -8,19 +9,7 @@ export function Catalog() {
             <div className="drawer-content flex flex-col items-center justify-center">
                 {/*<!-- Page content here -->*/}
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-                <div className="grid grid-cols-3 gap-4">
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                    <div className="artboard phone-1 bg-neutral">320×568</div>
-                </div>
+                <div><Deltr0nList/></div>
             
             </div> 
             <div className="drawer-side">
@@ -62,42 +51,7 @@ export function Catalog() {
                 </ul>
             
             </div>
-        </div>        
-
-        <div className='busqueda'>
-            <h3 className='labelBuscar'> Buscar producto:  </h3>
-            <input className='buscador' type='text' placeholder='Buscar...'/>
         </div>
-
-        <hr/>
-
-        <div className='catalogo'>
-            <ul className='tipos'>
-                <li> Tipo1 </li>
-                <li> Tipo2 </li>
-                <li> Tipo3 </li>
-            </ul>
-
-            <hr className='linea'/>
-
-            <div>
-                <table className='productos'>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Descripcion</th>
-                        <th>Precio</th>
-                    </tr>
-                    <tr>
-                        <td>Producto1</td>
-                        <td>Descripcion1</td>
-                        <td>Precio1</td>
-                    </tr>
-                </table>
-            </div>
-
-
-        </div>
-
     </div>
   )
 }
