@@ -7,6 +7,8 @@ class SystemSerializer(serializers.ModelSerializer):
         model = Producto
         # fields = ('id', 'name', 'price', 'description', 'stock')
         fields = '__all__'
+
+class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         # fields = ('DNI', 'RUC', 'name', 'lastname', 'phone', 'email', 'password')
