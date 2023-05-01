@@ -10,7 +10,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <html data-theme="dark"></html>
+    <html data-theme="synthwave">
     <div id='content'>
     <Navigation/>
     <Routes>
@@ -59,6 +59,7 @@ function App() {
       </div>
     </footer>
     </div>
+    </html>
     </BrowserRouter>
 
   )

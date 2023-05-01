@@ -1,21 +1,15 @@
+import { Deltr0nFormPage } from '../pages/Deltr0nFormPage'
 import {Deltr0nList} from './Deltr0nList'
 
 export function Catalog() {
   return (
     <div>
-
-        <div className="drawer drawer-mobile">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
-                {/*<!-- Page content here -->*/}
-                <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-                <div><Deltr0nList/></div>
-            
-            </div> 
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
-                <ul className="menu p-4 w-80 bg-neutral text-base-content">
-                <li className="text-xl font-bold">Categorias</li>
+        <div className='grid grid-cols-5 gap-4 m-4'>
+            <div>
+            <ul className="menu bg-neutral max-w p-2 rounded-box">
+            <li className="text-xl font-bold">
+                <span>Categorias</span>
+            </li>
                 <li><a>Procesador</a></li>
                 <li><a>Placa Madre</a></li>
                 <li><a>Memoria</a></li>
@@ -24,11 +18,14 @@ export function Catalog() {
                 <li><a>Cooler</a></li>
                 <li><a>Fuente de poder</a></li>
                 <li><a>Case</a></li>
-
-                <div className="divider"></div> 
                 
-                <li className="text-xl font-bold mb-2">Ordenar</li>
-                <select className="select select-bordered w-full max-w-xs">
+            <div className="divider"></div> 
+            <li className="text-xl font-bold">
+                <span>Ordenar</span>
+            </li>         
+                
+                {/*<li className="text-xl font-bold mb-2">Ordenar</li>*/}
+                <select className="select select-bordered w-10/12 max-w-xs ml-4">
                     {/*<option disabled selected>Who shot first?</option>*/}
                     <option>Alfabéticamente (A-Z)</option>
                     <option>Alfabéticamente (Z-A)</option>
@@ -36,22 +33,26 @@ export function Catalog() {
                     <option>Precio (Mayor a Menor)</option>
                 </select>
 
-                <div className="divider"></div>
-
-                <li className="text-xl font-bold mb-2">Filtrar</li>
-                <li className="font-bold">Disponibilidad</li>
-                <div className="form-control">
+            <div className="divider"></div> 
+            <li className="text-xl font-bold">
+                <span>Filtrar</span>
+            </li>
+            <li className="font-bold ml-4">Disponibilidad</li>
+                <div className="form-control ml-4">
                     <label className="label cursor-pointer">
                         <input type="checkbox" checked className="checkbox" />
-                        <span className="label-text">En stock</span> 
+                        <span className="label-text justify-start">En stock</span> 
                     </label>
-                </div>
+            </div>
+            </ul>
+            </div>
 
-                
-                </ul>
-            
+            <div className='col-span-4'>
+                <Deltr0nList/>
             </div>
         </div>
+
+
     </div>
   )
 }

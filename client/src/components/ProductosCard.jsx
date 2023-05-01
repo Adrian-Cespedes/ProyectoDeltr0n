@@ -6,7 +6,7 @@ export function ProductosCard({Productos}) {
     <figure><img src={imgtest}/></figure>
     <div className="card-body">
         <h2 className="card-title">{Productos.name}</h2>
-        <p>{Productos.price}</p>
+        <p>$ {Productos.price}</p>
         <div className="card-actions justify-end">
             <p>Stock: {Productos.stock} unidades</p>
         </div>
