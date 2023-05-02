@@ -12,7 +12,7 @@ export function Navigation() {
             </div> 
             
         </Link>
-        <Link to="/busqueda">Busqueda</Link>
+        {/*<Link to="/busqueda">Busqueda</Link>*/}
     </div>
   )
 }

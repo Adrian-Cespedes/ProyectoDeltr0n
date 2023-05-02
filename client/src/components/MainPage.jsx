@@ -1,4 +1,5 @@
 import Img1 from '../images/prueba.jpg'
+import {TempCarouselItems} from './Deltr0nList'
 
 export function MainPage() {
   return (
@@ -8,12 +9,9 @@ export function MainPage() {
     className="mb-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
 
 
-    <div className="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box">
-      <div className="carousel-item">
-        <img src={Img1} alt="Burger" className='rounded-box'/>
-      </div>
-      <div className="carousel-item">
-        <img src={Img1} alt="Burger" className='rounded-box'/>
+    <div className="carousel carousel-start p-4 space-x-4 bg-neutral rounded-box">
+      <div className="carousel-item mx-4">
+        <TempCarouselItems/>
       </div>
     </div>
 
@@ -22,12 +20,9 @@ export function MainPage() {
     <hr
     className="mb-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
 
-    <div className="carousel carousel-center p-4 space-x-4 bg-neutral rounded-box">
+    <div className="carousel carousel-start p-4 space-x-4 bg-neutral rounded-box">
       <div className="carousel-item">
-        <img src={Img1} alt="Burger" className='rounded-box'/>
-      </div>
-      <div className="carousel-item">
-        <img src={Img1} alt="Burger" className='rounded-box'/>
+        <TempCarouselItems/>
       </div>
     </div>
     </div>
