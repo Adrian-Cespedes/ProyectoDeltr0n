@@ -79,8 +79,6 @@ export function Deltr0nFormPage() {
                 {errors.id && <span>ID requerido</span>}
 
 
-                {errors.name && <span>Nombre requerido</span>}
-
                 <button>Eliminar</button>
             </form>
 
