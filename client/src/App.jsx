@@ -33,6 +33,7 @@ function App() {
       </div>
       <div className="flex">
         <ul className="menu menu-horizontal px-1">
+          <li><a href='/admin'>ADMIN</a></li>
           <li><a href='/catalogo'>Catálogo</a></li>
           <li><a>Ofertas</a></li>
           <li><a>Perfil</a></li>
@@ -44,7 +45,7 @@ function App() {
     <Routes>
       <Route path='/inicio' element={<MainPage/>} />
       <Route path='/catalogo' element={<Catalog/>} />
-      <Route path='/busqueda' element={<Deltr0nFormPage/>} />
+      <Route path='/admin' element={<Deltr0nFormPage/>} />
     </Routes>
 
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
