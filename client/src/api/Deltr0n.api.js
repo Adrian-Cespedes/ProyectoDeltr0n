@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const Deltr0nAPI = axios.create({
-    baseURL: 'http://localhost:8000/system/api/v1/productos/'
+    baseURL: 'http://localhost:8000/system/api/search/productos'
 })
 
 export const getAllProducts = () => {

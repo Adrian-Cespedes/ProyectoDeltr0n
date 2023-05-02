@@ -47,6 +47,7 @@ export function Catalog() {
             </ul>
             </div>
 
+            {/* Listado de productos */}
             <div className='col-span-4'>
                 <Deltr0nList/>
             </div>
