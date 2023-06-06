@@ -60,8 +60,6 @@ $ npm run dev
 
 Listo por defecto si ingresas desde tu navegador a `localhost:5173` verás la página de inicio de la aplicación
 
-## Diagramas
-
 ## Autores
 
 - _Anlec(Marcelo chincha)_
@@ -71,5 +69,3 @@ Listo por defecto si ingresas desde tu navegador a `localhost:5173` verás la p�
 ## Licencia
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-## Bibliografía
