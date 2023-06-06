@@ -60,9 +60,9 @@ Ya tenemos todo listo, entonces por defecto si ingresas desde tu navegador a `lo
 
 ## Autores
 
-- _Anlec(Marcelo chincha)_
-- _Adrian Cespedes(Adrian Cespedes)_
-- _Hyp3Boy(Lenin Chavez)_
+- _Anlec(Marcelo chincha)_ 202210092
+- _Adrian Cespedes(Adrian Cespedes)_ 202210088
+- _Hyp3Boy(Lenin Chavez)_ 202210090
 
 ## Licencia
 
