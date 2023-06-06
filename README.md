@@ -4,8 +4,8 @@ Proyecto para **DBP** y **DB1**
 
 ### Quienes somos
 
-Somos un grupo de estudiantes de UTEC quienes realizaran este proyecto para el curso
-CS2031 - Desarrollo Basado en plataformas
+Somos un grupo de estudiantes de UTEC quienes realizaran este proyecto para los cursos
+CS2031 - Desarrollo Basado en plataformas y CS2041 - Base de datos I
 
 ### Acerca del Proyecto
 
