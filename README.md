@@ -11,12 +11,10 @@ CS2031 - Desarrollo Basado en plataformas
 
 El siguiente repositorio es una aplicación web para la compra al por mayor de componentes para pc, nuestros clientes o público objetivo son las empresas(Personas jurídicas)
 
-## Video de presentación
-
 ## Características Principales
 
-- Uso de [caffe](https://caffe.berkeleyvision.org) que es un deep learning framework ;
-- Código completamente escrito en C++;
+- Uso de Django para el servidor y ORM;
+- Uso de React y tailwindcss;
 
 ## Guía de instalación
 
