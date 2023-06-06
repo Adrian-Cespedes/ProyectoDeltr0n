@@ -56,7 +56,7 @@ $ python3 manage.py runserver
 $ npm run dev
 ```
 
-Listo por defecto si ingresas desde tu navegador a `localhost:5173` verás la página de inicio de la aplicación
+Ya tenemos todo listo, entonces por defecto si ingresas desde tu navegador a `localhost:5173` verás la página de inicio de la aplicación
 
 ## Autores
 
