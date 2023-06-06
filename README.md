@@ -52,7 +52,7 @@ $ npm install
 ```bash
 # En una terminal corres el servidor desde la carpeta raíz del repositorio
 $ python3 manage.py runserver
-# Luego para el frontEndd vamos a la carpeta client
+# Luego para el frontEnd vamos a la carpeta client
 $ npm run dev
 ```
 
