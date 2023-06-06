@@ -5,11 +5,11 @@ Proyecto para **DBP** y **DB1**
 ### Quienes somos
 
 Somos un grupo de estudiantes de UTEC quienes realizaran este proyecto para el curso
-CS2013 - Programación III
+CS2031 - Desarrollo Basado en plataformas
 
 ### Acerca del Proyecto
 
-El siguiente repositorio es un proyecto sobre la implementación de una red neuronal convolucionaria (CNN) en C++ para clasificar imagenes de diferentes categorías como animales o vehículos. Incluimos el diseño de la arquitectura de la red neuronal, la implementación de los pases hacia adelante y hacia atrás, y como optimizamos la red utilizando el descenso de gradiente.
+El siguiente repositorio es una aplicación web para la compra al por mayor de componentes para pc, nuestros clientes o público objetivo son las empresas(Personas jurídicas)
 
 ## Video de presentación
 
@@ -20,26 +20,51 @@ El siguiente repositorio es un proyecto sobre la implementación de una red neur
 
 ## Guía de instalación
 
-Para clonar y ejecutar nuestro trabajo necesitas [Git](https://git-scm.com) y [C++ compiler](https://www.cs.odu.edu/~zeil/cs250PreTest/latest/Public/installingACompiler/#installing-a-c-compiler-on-microsoft-windows) (recomendamos instalar xcode cli tools si estas en mac os). Después de cumplir con los requisitos puedes ejecutar lo siguiente desde tu línea de comandos:
+Para clonar y ejecutar nuestro trabajo necesitas [Git](https://git-scm.com), [Node JS with npm](https://nodejs.org/es/download) y [Python](https://www.python.org/downloads/). Después de cumplir con los requisitos puedes ejecutar lo siguiente desde tu línea de comandos:
 
 ```bash
 # Clona este repositorio
-$ git clone https://github.com/CS1103/proyecto-final---te03---202301-pf0320231-grupo1.git
-```
-
-```bash
-# Si tienes una clave SSH
-$git clone git@github.com:CS1103/proyecto-final---te03---202301-pf0320231-grupo1.git
+$ git clone https://github.com/Adrian-Cespedes/ProyectoDeltr0n.git
 ```
 
 ## Instrucciones de uso
+
+Bueno esta aplicación fue construida con Django para el servidor y hace uso de un REST Framework y REACT para el frontEnd.
+
+- Primer Paso: una vez estemos en la carpeta del repositorio clonado debemos instalar los módulos de python necesarios.
+
+```bash
+# Instalamos los módulos
+$ pip3 install django
+$ pip3 install djangorestframework
+$ pip3 install django-cors-headers
+```
+
+- Segundo Paso: Ahora tenemos que instalar las dependencias para nuestro frontEnd.
+
+```bash
+# Entramos a la carpeta client
+cd client
+# Instalamos lo necesario
+$ npm install
+```
+
+- Tecer Paso: Correr la aplicación
+
+```bash
+# En una terminal corres el servidor desde la carpeta raíz del repositorio
+$ python3 manage.py runserver
+# Luego para el frontEndd vamos a la carpeta client
+$ npm run dev
+```
+
+Listo por defecto si ingresas desde tu navegador a `localhost:5173` verás la página de inicio de la aplicación
 
 ## Diagramas
 
 ## Autores
 
 - _Anlec(Marcelo chincha)_
-- _slamgLuke(Lucas Carranza)_
 - _Adrian Cespedes(Adrian Cespedes)_
 - _Hyp3Boy(Lenin Chavez)_
 
