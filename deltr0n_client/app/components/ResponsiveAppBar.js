@@ -157,7 +157,7 @@ function ResponsiveAppBar() {
           >
             {links.map(({ label, url, img, styleconfig }) => (
               <Button
-                key={url}
+                href={url}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "flex" }}
               >
