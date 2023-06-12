@@ -23,7 +23,7 @@ export default function ProductosLayout({ children }) {
   ]
 
   return (
-    <div className='mx-auto flex max-w-7xl flex-col py-6 text-white'>
+    <div className='mx-auto flex max-w-7xl flex-col py-6 text-white md:flex-row'>
       <div className='order-first flex-none md:w-1/6'>
         <nav className='col-span-2 w-full flex-none px-6 py-2 md:py-4 md:pl-10'>
           <h3 className='font-semibold text-white md:block'>Categorias</h3>
