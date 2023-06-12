@@ -207,6 +207,7 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
       <Container maxWidth="xl" sx={{ display: "flex" }}>
+        
         <Input
           placeholder="🔎 Buscar artículo"
           sx={{
