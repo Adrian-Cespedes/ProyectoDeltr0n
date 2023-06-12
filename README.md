@@ -14,7 +14,7 @@ El siguiente repositorio es una aplicación web para la compra al por mayor de c
 ## Características Principales
 
 - Uso de Django para el servidor y ORM;
-- Uso de React y tailwindcss;
+- Uso de NextJS y tailwindcss;
 
 ## Guía de instalación
 
@@ -27,7 +27,7 @@ $ git clone https://github.com/Adrian-Cespedes/ProyectoDeltr0n.git
 
 ## Instrucciones de uso
 
-Bueno esta aplicación fue construida con Django para el servidor y hace uso de un REST Framework y REACT para el frontEnd.
+Bueno esta aplicación fue construida con Django para el servidor y hace uso de un REST Framework y NEXTJS para el frontEnd.
 
 - Primer Paso: una vez estemos en la carpeta del repositorio clonado debemos instalar los módulos de python necesarios.
 
@@ -41,8 +41,8 @@ $ pip3 install django-cors-headers
 - Segundo Paso: Ahora tenemos que instalar las dependencias para nuestro frontEnd.
 
 ```bash
-# Entramos a la carpeta client
-cd client
+# Entramos a la carpeta deltr0n_client
+cd deltr0n_client
 # Instalamos lo necesario
 $ npm install
 ```
@@ -51,7 +51,7 @@ $ npm install
 
 ```bash
 # En una terminal corres el servidor desde la carpeta raíz del repositorio
-$ python3 manage.py runserver
+$ python3 manage.py runserver #MISSING SOME PARTS
 # Luego para el frontEnd vamos a la carpeta client
 $ npm run dev
 ```
