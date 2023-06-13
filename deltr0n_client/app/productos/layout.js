@@ -1,5 +1,11 @@
+import getRoute from "../functions/getRoute"
+
 export default function ProductosLayout({ children }) {
   const categories = [
+    {
+      name: 'Todos',
+      url: ''
+    },
     {
       name: 'CPU',
       url: 'cpu'
@@ -22,8 +28,10 @@ export default function ProductosLayout({ children }) {
     }
   ]
 
+  // console.log(getRoute())
+
   return (
-    <div className='mx-auto flex max-w-7xl flex-col py-6 text-white md:flex-row'>
+    <div className='mx-auto flex max-w-fit flex-col py-6 text-white md:flex-row'>
       <div className='order-first flex-none md:w-1/6'>
         <nav className='col-span-2 w-full flex-none px-6 py-2 md:py-4 md:pl-10'>
           <h3 className='font-semibold text-white md:block'>Categorias</h3>
@@ -36,7 +44,7 @@ export default function ProductosLayout({ children }) {
           </ul>
         </nav>
       </div>
-      <div className="order-last min-h-screen w-full md:order-none">
+      <div className="order-last min-h-screen w-full md:order-none pr-20">
         {children}
       </div>
     </div >

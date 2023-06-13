@@ -207,15 +207,15 @@ function ResponsiveAppBar() {
         </Toolbar>
       </Container>
       <Container maxWidth="xl" sx={{ display: "flex" }}>
-              <Button
-                href="/productos"
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "flex" , border: "1px solid white", left: "4%", fontWeight: "bold"}}
-              >
-                Productos
-              </Button>
+        <Button
+          href="/productos"
+          onClick={handleCloseNavMenu}
+          sx={{ my: 2, color: "white", display: "flex", border: "1px solid white", left: "4%", fontWeight: "bold" }}
+        >
+          Productos
+        </Button>
 
-  
+
         <Input
           placeholder="🔎 Buscar artículo"
           sx={{
@@ -223,7 +223,7 @@ function ResponsiveAppBar() {
             padding: "10px",
             borderRadius: "7px",
             flexGrow: 1,
-            left: "35%",
+            left: "25%",
             maxWidth: "62%",
           }}
         />
