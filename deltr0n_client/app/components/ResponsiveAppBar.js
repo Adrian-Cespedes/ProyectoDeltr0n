@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -157,6 +156,7 @@ function ResponsiveAppBar() {
           >
             {links.map(({ label, url, img, styleconfig }) => (
               <Button
+                key={url}
                 href={url}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "flex" }}
@@ -210,11 +210,17 @@ function ResponsiveAppBar() {
         <Button
           href="/productos"
           onClick={handleCloseNavMenu}
-          sx={{ my: 2, color: "white", display: "flex", border: "1px solid white", left: "4%", fontWeight: "bold" }}
+          sx={{
+            my: 2,
+            color: "white",
+            display: "flex",
+            border: "1px solid white",
+            left: "4%",
+            fontWeight: "bold",
+          }}
         >
           Productos
         </Button>
-
 
         <Input
           placeholder="🔎 Buscar artículo"
