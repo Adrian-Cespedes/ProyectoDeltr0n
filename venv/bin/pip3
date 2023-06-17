@@ -1,4 +1,4 @@
-#!/home/adrianjcz/Escritorio/deltr0n_proyect/venv/bin/python3
+#!/Users/lenin.chavez/Documents/DBP/ProyectoDeltr0n/venv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
