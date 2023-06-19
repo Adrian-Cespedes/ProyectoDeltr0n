@@ -351,8 +351,26 @@ def route_cliente(ruc):
 @app.route("/api/clientes/carrito/<ruc>", methods=["GET", "POST"]) 
 def route_carrito(ruc):
     if request.method == "GET":
-        carrito_productos = Carrito_de_Compras.query.filter_by(cliente_ruc = ruc).all()
-        return jsonify(carrito_productos)
+        carrito_productos = db.session.query(Carrito_de_Compras, Producto).join(Producto).all()
+
+        # Crear una lista para almacenar los resultados serializados
+        carrito_productos_serializados = []
+
+        # Iterar sobre los resultados del join
+        for carrito, producto in carrito_productos:
+            # Extraer los valores necesarios de cada fila
+            carrito_producto_serializado = {
+                'id': carrito.id,
+                'cliente_ruc': carrito.cliente_ruc,
+                'producto_id': carrito.producto_id,
+                'cantidad': carrito.cantidad,
+                'nombre': producto.nombre,
+                'descripcion': producto.descripcion,
+                'precio' : producto.precio
+            }
+            # Agregar el diccionario serializado a la lista
+            carrito_productos_serializados.append(carrito_producto_serializado)
+        return jsonify(carrito_productos_serializados)
     elif request.method == "POST":
         carrito = Carrito_de_Compras(id = request.json["id"], cliente_ruc = ruc, producto_id = request.json["producto_id"], cantidad = request.json["cantidad"])
         db.session.add(carrito)

@@ -15,17 +15,12 @@ function createData(name, precio, cantidad) {
 }
 
 function calcularTotal(data){
-    console.log(data);
     var total = 0;
     for (let index = 0; index < data.length; index++) {
         total += data[index].precio * data[index].cantidad;
     }
     return total;
 }
-
-const rows = [
-
-];
 
 export default function carritoPage() {
 
@@ -35,21 +30,10 @@ export default function carritoPage() {
     const ruc = "04657384920";
 
     const addElementToTable = (newElement) => {
-        const newData = [...tableData, newElement];
-        setTableData(newData);
-        setTotalPrice(calcularTotal(newData));
-      };
+        setTotalPrice(totalPrice + 1);
+    };
 
     function buy(){
-        console.log("In button",tableData);
-        fetch('http://127.0.0.1:8080/api/clientes')
-        .then(response => {
-            return response.json();
-        }).then(data => {
-            console.log(data);
-        }).catch(err => {
-            console.log(err);
-        });
     }
 
     useEffect(() => {
@@ -60,11 +44,14 @@ export default function carritoPage() {
             return response.json();
         }).then(data => {
             //Iterate over data and add to table
-            console.log(data);
+            let backData = [];
             for (let index = 0; index < data.length; index++) {
                 const element = data[index];
-                addElementToTable(createData(element.nombre, element.precio, element.cantidad));
+                //console.log(element); 
+                backData = [...backData,createData(element.nombre, element.precio, element.cantidad)];
             }
+            setTableData(backData);
+            setTotalPrice(calcularTotal(backData));
         }).catch(err => {
             console.log(err);
         });
@@ -88,9 +75,8 @@ export default function carritoPage() {
                 <TableCell align="right">Total($)</TableCell>
             </TableRow>
             </TableHead>
-
             <TableBody>
-                {tableData.map((row, index) => (
+            {tableData.map((row, index) => (
                     <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                     {/* Render table cells for each element */}
                     <TableCell component="th" scope="row">
