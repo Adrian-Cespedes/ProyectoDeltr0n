@@ -1,6 +1,6 @@
 "use client";
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,6 +15,7 @@ function createData(name, precio, cantidad) {
 }
 
 function calcularTotal(data){
+    console.log(data);
     var total = 0;
     for (let index = 0; index < data.length; index++) {
         total += data[index].precio * data[index].cantidad;
@@ -23,20 +24,51 @@ function calcularTotal(data){
 }
 
 const rows = [
-    createData('GTX 1050', 300, 4),
-    createData('GTX 1060', 400, 2),
-    createData('GTX 1070', 500, 1),
-    createData('GTX 1080', 600, 1),
+
 ];
 
 export default function carritoPage() {
 
     const [totalPrice, setTotalPrice] = useState(0);
+    const [tableData, setTableData] = useState([]);
+
+    const ruc = "04657384920";
+
+    const addElementToTable = (newElement) => {
+        const newData = [...tableData, newElement];
+        setTableData(newData);
+        setTotalPrice(calcularTotal(newData));
+      };
 
     function buy(){
-        setTotalPrice(100);
-        
+        console.log("In button",tableData);
+        fetch('http://127.0.0.1:8080/api/clientes')
+        .then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.log(err);
+        });
     }
+
+    useEffect(() => {
+        // Fecth data from carrito
+        fetch("http://localhost:8080/api/clientes/carrito/04657384920", {
+            method: 'GET',
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            //Iterate over data and add to table
+            console.log(data);
+            for (let index = 0; index < data.length; index++) {
+                const element = data[index];
+                addElementToTable(createData(element.nombre, element.precio, element.cantidad));
+            }
+        }).catch(err => {
+            console.log(err);
+        });
+      }, []); 
 
     return (
         <div>
@@ -56,21 +88,19 @@ export default function carritoPage() {
                 <TableCell align="right">Total($)</TableCell>
             </TableRow>
             </TableHead>
-            <TableBody>
-            {rows.map((row) => (
-                <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                <TableCell component="th" scope="row">
-                    {row.name}
-                </TableCell>
-                <TableCell align="right">{row.precio}</TableCell>
-                <TableCell align="right">{row.cantidad}</TableCell>
-                <TableCell align="right">{row.precio * row.cantidad}</TableCell>
-                </TableRow>
-            ))}
 
+            <TableBody>
+                {tableData.map((row, index) => (
+                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    {/* Render table cells for each element */}
+                    <TableCell component="th" scope="row">
+                    {row.name}
+                    </TableCell>
+                    <TableCell align="right">{row.precio}</TableCell>
+                    <TableCell align="right">{row.cantidad}</TableCell>
+                    <TableCell align="right">{row.precio * row.cantidad}</TableCell>
+                    </TableRow>
+                ))}
             </TableBody>
         </Table>
         </TableContainer>
