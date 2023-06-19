@@ -348,6 +348,38 @@ def route_cliente(ruc):
         return "SUCCESS"
 
 
+@app.route("/api/productos", methods=["GET", "POST"])
+def route_productos():
+    if request.method == "GET":
+        productos = Producto.query.all()
+        return jsonify(productos)
+    elif request.method == "POST":
+        producto = Producto(**request.json)
+        db.session.add(producto)
+        db.session.commit()
+        return "SUCCESS"
+
+
+@app.route("/api/productos/<id>", methods=["GET", "PUT", "DELETE"])
+def route_producto(id):
+    if request.method == "GET":
+        producto = Producto.query.get(id)
+        return jsonify(producto)
+    elif request.method == "PUT":
+        producto = Producto.query.get(id)
+        producto.nombre = request.json["nombre"]
+        producto.descripcion = request.json["descripcion"]
+        producto.precio = request.json["precio"]
+        producto.fabricante_nombre = request.json["fabricante_nombre"]
+        db.session.commit()
+        return "SUCCESS"
+    elif request.method == "DELETE":
+        producto = Producto.query.get(id)
+        db.session.delete(producto)
+        db.session.commit()
+        return "SUCCESS"
+
+
 with app.app_context():
     db.create_all()
 
