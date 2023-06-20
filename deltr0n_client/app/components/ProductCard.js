@@ -11,7 +11,7 @@ export default function ProductCard({ product }) {
         <CardMedia
           component="img"
           height="140"
-          image={product.imagen ? product.imagen : "/asusrtx4090oc.png"}
+          image={product.imagen ? product.imagen : "/noimage.png"}
           alt={product.nombre}
         />
         <CardContent>
