@@ -17,6 +17,7 @@ import Image from "next/image";
 import logo from "../../public/logo.png";
 import Input from "@mui/material/Input";
 import { style } from "@mui/system";
+import Link from 'next/link';
 
 const Logito = (props) => (
   <Image
@@ -198,9 +199,11 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <Link key={setting} href={`${setting.toLowerCase()}`}>
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>

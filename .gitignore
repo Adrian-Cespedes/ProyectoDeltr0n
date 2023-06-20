@@ -3,3 +3,4 @@ deltr0n_system/migrations/__pycache__
 django_api/__pycache__
 venv/lib/python3.10/site-packages/pip/__pycache__
 venv
+client/node_modules
