@@ -1,4 +1,5 @@
 import getRoute from "../functions/getRoute"
+import Link from 'next/link'
 
 export default function ProductosLayout({ children }) {
   const categories = [
@@ -28,7 +29,8 @@ export default function ProductosLayout({ children }) {
     }
   ]
 
-  // console.log(getRoute())
+  const route = getRoute() === 'productos' ? '' : getRoute()
+  var color_text = 'text-gray-100'
 
   return (
     <div className='mx-auto flex max-w-fit flex-col py-6 text-white md:flex-row'>
@@ -36,10 +38,12 @@ export default function ProductosLayout({ children }) {
         <nav className='col-span-2 w-full flex-none px-6 py-2 md:py-4 md:pl-10'>
           <h3 className='font-semibold text-white md:block'>Categorias</h3>
           <ul className="md:block">
-            {categories.map((category) =>
-              <li className='mt-2 flex text-sm text-gray-400'>
-                <a className='w-full hover:text-gray-100' href={`/productos/${category.url}`}>{category.name}</a>
+            {categories.map((category) => {
+              color_text = category.url === route ? color_text : 'text-gray-400'
+              return <li className={`mt-2 flex text-sm ${color_text}`}>
+                <Link className='w-full hover:text-gray-100' href={`/productos/${category.url}`}>{category.name}</Link>
               </li>
+            }
             )}
           </ul>
         </nav>

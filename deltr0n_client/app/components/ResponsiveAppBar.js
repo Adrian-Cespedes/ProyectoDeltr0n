@@ -49,7 +49,7 @@ const links = [
     },
   },
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -199,8 +199,8 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link key={setting} href={`${setting.toLowerCase()}`}>
-                  <MenuItem onClick={handleCloseUserMenu}>
+                <Link href={`${setting.toLowerCase()}`}>
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 </Link>
@@ -237,7 +237,7 @@ function ResponsiveAppBar() {
           }}
         />
       </Container>
-    </AppBar>
+    </AppBar >
   );
 }
 export default ResponsiveAppBar;
