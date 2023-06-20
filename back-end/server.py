@@ -346,12 +346,15 @@ def route_cliente(ruc):
         db.session.delete(cliente)
         db.session.commit()
         return "SUCCESS"
-    
-#Obtener carrito de cliente
-@app.route("/api/clientes/carrito/<ruc>", methods=["GET", "POST"]) 
+
+
+# Obtener carrito de cliente
+@app.route("/api/clientes/carrito/<ruc>", methods=["GET", "POST"])
 def route_carrito(ruc):
     if request.method == "GET":
-        carrito_productos = db.session.query(Carrito_de_Compras, Producto).join(Producto).all()
+        carrito_productos = (
+            db.session.query(Carrito_de_Compras, Producto).join(Producto).all()
+        )
 
         # Crear una lista para almacenar los resultados serializados
         carrito_productos_serializados = []
@@ -360,24 +363,30 @@ def route_carrito(ruc):
         for carrito, producto in carrito_productos:
             # Extraer los valores necesarios de cada fila
             carrito_producto_serializado = {
-                'id': carrito.id,
-                'cliente_ruc': carrito.cliente_ruc,
-                'producto_id': carrito.producto_id,
-                'cantidad': carrito.cantidad,
-                'nombre': producto.nombre,
-                'descripcion': producto.descripcion,
-                'precio' : producto.precio
+                "id": carrito.id,
+                "cliente_ruc": carrito.cliente_ruc,
+                "producto_id": carrito.producto_id,
+                "cantidad": carrito.cantidad,
+                "nombre": producto.nombre,
+                "descripcion": producto.descripcion,
+                "precio": producto.precio,
             }
             # Agregar el diccionario serializado a la lista
             carrito_productos_serializados.append(carrito_producto_serializado)
         return jsonify(carrito_productos_serializados)
     elif request.method == "POST":
-        carrito = Carrito_de_Compras(id = request.json["id"], cliente_ruc = ruc, producto_id = request.json["producto_id"], cantidad = request.json["cantidad"])
+        carrito = Carrito_de_Compras(
+            id=request.json["id"],
+            cliente_ruc=ruc,
+            producto_id=request.json["producto_id"],
+            cantidad=request.json["cantidad"],
+        )
         db.session.add(carrito)
         db.session.commit()
         return "SUCCESS"
 
-#ruta de productos
+
+# ruta de productos
 @app.route("/api/productos", methods=["GET", "POST"])
 def route_productos():
     if request.method == "GET":
@@ -390,9 +399,17 @@ def route_productos():
         return "SUCCESS"
 
 
+# ruta para obtener productos por categoria
+@app.route("/api/productos/<categoria>", methods=["GET"])
+def route_productos_categoria(categoria):
+    if request.method == "GET":
+        productos = Producto.query.filter_by(categoria=categoria).all()
+        return jsonify(productos)
+
+
 with app.app_context():
     db.create_all()
-    
+
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)
