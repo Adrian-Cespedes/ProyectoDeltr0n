@@ -1,0 +1,36 @@
+Poblar:
+- Cliente
+- Persona
+- Recogedor
+- Fabricante
+- Producto
+- Venta
+- Contiene_pr_venta
+
+ruc:
+10\([0-9]{9})
+
+email:
+- email
+
+razon social:
+- text -> max 50
+
+contraseña:
+- random text (finnegan) -> min 1 max 2
+
+telefono:
+[1-9]{1}[0-9]{8}
+
+dni:
+[0-9]{8}
+
+producto_nombre:
+(Intel i|Ryzen |RTX |GTX |RX |SSD |HDD)[1-9]{4}
+
+img_url:
+[a-zA-Z0-9]{3,}(\.png)
+
+venta estado:
+(pendiente|en camino|entregado|cancelado)
+
