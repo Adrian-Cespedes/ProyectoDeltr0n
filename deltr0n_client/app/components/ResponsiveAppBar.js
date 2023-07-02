@@ -46,10 +46,11 @@ const links = [
     styleconfig: {
       width: "40px",
       height: "40px",
+      margin: "0 20px",
     },
   },
 ];
-const settings = ["Account", "Dashboard", "Logout"];
+const settings = ["Login", "Sign up", "My account"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -177,13 +178,13 @@ function ResponsiveAppBar() {
                 <img
                   src="https://giftcards.woolworths.com.au/_ui/responsive/common/images/User_icon_white.png"
                   alt=""
-                  style={{ width: "30px", height: "30px", padding: "0 5" }}
+                  className="w-9 h-9 mr-2"
                 />
-                Mi cuenta
+                Bienvenido
               </Button>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: "70px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -199,7 +200,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link key={setting} href={`${setting.toLowerCase()}`}>
+                <Link key={setting} href={`/${setting.toLowerCase().replace(/\s+/g, '')}`}>
                   <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>

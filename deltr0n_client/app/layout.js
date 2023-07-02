@@ -10,14 +10,19 @@ export const metadata = {
   description: 'PCUnion - Tienda de computadoras',
 }
 
-export default function RootLayout({ children }) {
+
+export default function RootLayout({ children } ) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <ResponsiveAppBar />
-        {children}
+        <div className="p-4">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
   )
 }
+
+
