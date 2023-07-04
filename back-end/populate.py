@@ -117,23 +117,23 @@ with app.app_context():
                    dominio_correo="nvidia.com"))
 
     # productos
-    db.session.add(Producto(id=2, nombre="Ryzen 5",
+    db.session.add(Producto(id=1, nombre="Ryzen 5",
                    precio=2000, fabricante_nombre="AMD"))
-    db.session.add(Producto(id=3, nombre="Ryzen 7",
+    db.session.add(Producto(id=2, nombre="Ryzen 7",
                    precio=3000, fabricante_nombre="AMD"))
-    db.session.add(Producto(id=4, nombre="Ryzen 9",
+    db.session.add(Producto(id=3, nombre="Ryzen 9",
                    precio=4000, fabricante_nombre="AMD"))
-    db.session.add(Producto(id=5, nombre="RTX 2060",
+    db.session.add(Producto(id=4, nombre="RTX 2060",
                    precio=3000, fabricante_nombre="Nvidia"))
-    db.session.add(Producto(id=6, nombre="RTX 2070",
+    db.session.add(Producto(id=5, nombre="RTX 2070",
                    precio=4000, fabricante_nombre="Nvidia"))
-    db.session.add(Producto(id=7, nombre="RTX 2080",
+    db.session.add(Producto(id=6, nombre="RTX 2080",
                    precio=5000, fabricante_nombre="Nvidia"))
-    db.session.add(Producto(id=8, nombre="RTX 2080 Ti",
+    db.session.add(Producto(id=7, nombre="RTX 2080 Ti",
                    precio=6000, fabricante_nombre="Nvidia"))
-    db.session.add(Producto(id=9, nombre="GTX 1660",
+    db.session.add(Producto(id=8, nombre="GTX 1660",
                    precio=2000, fabricante_nombre="Nvidia"))
-    db.session.add(Producto(id=10, nombre="GTX 1660 Ti",
+    db.session.add(Producto(id=9, nombre="GTX 1660 Ti",
                    precio=3000, fabricante_nombre="Nvidia"))
 
     # contrasenha

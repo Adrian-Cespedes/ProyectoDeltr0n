@@ -399,8 +399,17 @@ def route_productos():
 @app.route("/api/productos/<categoria>", methods=["GET"])
 def route_productos_categoria(categoria):
     if request.method == "GET":
-        productos = Producto.query.filter_by(categoria=categoria).all()
-        return jsonify(productos)
+        prod = Producto.query.all()
+        cat = Categoria_de.query.filter_by(categoria_nombre = categoria.upper()).all()
+        productos_cat = []
+
+        for pr in prod:
+            for c in cat:
+                if pr.id == c.producto_id:
+                    productos_cat.append(pr)
+
+
+        return jsonify(productos_cat)
 
 
 # ruta para verificar contrasenha

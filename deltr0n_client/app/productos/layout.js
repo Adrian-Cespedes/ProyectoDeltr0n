@@ -13,7 +13,7 @@ export default function ProductosLayout({ children }) {
     },
     {
       name: 'GPU',
-      url: 'cpu'
+      url: 'gpu'
     },
     {
       name: 'Memoria RAM',
