@@ -411,7 +411,9 @@ def login():
     contrasenha = data.get('contrasenha')
 
     cliente = Cliente.query.get(ruc)
-    return cliente is not None and bcrypt.check_password_hash(cliente.contrasenha, contrasenha)
+    check = cliente is not None and bcrypt.check_password_hash(
+        cliente.contrasenha, contrasenha)
+    return jsonify({"check": check})
 
 
 with app.app_context():
