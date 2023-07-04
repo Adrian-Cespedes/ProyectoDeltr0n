@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
 app.config[
@@ -12,6 +13,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 CORS(app)
 db = SQLAlchemy(app)
+
+bcrypt = Bcrypt(app)
 
 
 @dataclass
@@ -25,12 +28,15 @@ class Cliente(db.Model):
     __tablename__ = "cliente"
     ruc = db.Column(db.String(11), primary_key=True)
     email = db.Column(db.String(50), unique=True)
-    razon_social = db.Column(db.String(50))
+    razon_social = db.Column(db.String(200))
     contrasenha = db.Column(db.String(50))
     telefono = db.Column(db.String(50))
 
     def __repr__(self):
         return f"<Cliente {self.ruc}>"
+
+    def check_password(self, password):
+        return self.contrasenha == password
 
 
 @dataclass
@@ -395,6 +401,17 @@ def route_productos_categoria(categoria):
     if request.method == "GET":
         productos = Producto.query.filter_by(categoria=categoria).all()
         return jsonify(productos)
+
+
+# ruta para verificar contrasenha
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.json
+    ruc = data.get('ruc')
+    contrasenha = data.get('contrasenha')
+
+    cliente = Cliente.query.get(ruc)
+    return cliente is not None and bcrypt.check_password_hash(cliente.contrasenha, contrasenha)
 
 
 with app.app_context():

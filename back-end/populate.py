@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 from sqlalchemy.schema import DropTable
 from sqlalchemy.ext.compiler import compiles
@@ -15,6 +16,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 CORS(app)
 db = SQLAlchemy(app)
+
+bcrypt = Bcrypt(app)
 
 
 @dataclass
@@ -49,7 +52,7 @@ class Cliente(db.Model):
     ruc = db.Column(db.String(11), primary_key=True)
     email = db.Column(db.String(50), unique=True)
     razon_social = db.Column(db.String(50))
-    contrasenha = db.Column(db.String(50))
+    contrasenha = db.Column(db.String(200))
     telefono = db.Column(db.String(50))
 
     def __repr__(self):
@@ -133,12 +136,17 @@ with app.app_context():
     db.session.add(Producto(id=10, nombre="GTX 1660 Ti",
                    precio=3000, fabricante_nombre="Nvidia"))
 
+    # contrasenha
+    contra = bcrypt.generate_password_hash("test123").decode("utf-8")
+
     # clientes
     db.session.add(Cliente(
-        ruc='10999999991', email='test1@gmail.com', razon_social='Test1 SAC', contrasenha='test123', telefono='999888777'
+        ruc='10999999991', email='test1@gmail.com', razon_social='Test1 SAC',
+        contrasenha=contra, telefono='999888777'
     ))
     db.session.add(Cliente(
-        ruc='10999999992', email='test2@gmail.com', razon_social='Test2 SAC', contrasenha='test123', telefono='999888666'
+        ruc='10999999992', email='test2@gmail.com', razon_social='Test2 SAC',
+        contrasenha=contra, telefono='999888666'
     ))
 
     db.session.commit()
