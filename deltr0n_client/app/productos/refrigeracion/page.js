@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid'; // Grid version 1
 import ProductCard from '../../components/ProductCard';
 
 async function getProducts() {
-  const res = await fetch("http://localhost:8080/api/productos/cpu")
+  const res = await fetch("http://localhost:8080/api/productos/refrigeracion")
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -27,11 +27,7 @@ export default async function Page() {
 
   const productsData = await getProducts();
 
-  // Wait for the promises to resolve
-  // const products = await Promise(productsData)
-
   console.log(productsData)
-  // return <h1>AA</h1>
 
   return (
     <Grid container spacing={2}>
