@@ -1,6 +1,7 @@
 'use client'
 import Grid from '@mui/material/Grid'; // Grid version 1
 import ProductCard from '../../components/ProductCard';
+import { useState,useEffect } from 'react';
 
 async function getProducts() {
   const res = await fetch("http://localhost:8080/api/productos/gpu")
@@ -13,27 +14,27 @@ async function getProducts() {
   return res.json()
 }
 
-export default async function Page() {
+export default function Page() {
 
-  const tempData = [
-    { id: 0 },
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 }
-  ]
+  const [productsData , setProductsData] = useState([]);
+  const [message, setMessage] = useState('Loading...');
 
-  const productsData = await getProducts();
-
-  // Wait for the promises to resolve
-  // const products = await Promise(productsData)
-
-  console.log(productsData)
-  // return <h1>AA</h1>
+  //Get products on page load
+  useEffect(() => {
+    getProducts()
+      .then((data) => {
+        setProductsData(data)
+        setMessage('')
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }, [])
 
   return (
+
+    <div>
+    <h1 style={{color: "black", textAlign: "right"}}>{message}</h1>
     <Grid container spacing={2}>
       {
         productsData.map((product) =>
@@ -43,5 +44,6 @@ export default async function Page() {
         )
       }
     </Grid>
+    </div>
   )
 }

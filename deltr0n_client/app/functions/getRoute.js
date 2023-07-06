@@ -10,7 +10,6 @@
 import { headers } from 'next/headers';
 
 export default function getRoute() {
-  console.log("hola")
   const headersList = headers();
   const domain = headersList.get('host') || "";
   const fullUrl = headersList.get('referer') || "";
