@@ -13,7 +13,7 @@ El siguiente repositorio es una aplicación web para la compra al por mayor de c
 
 ## Características Principales
 
-- Uso de Django para el servidor y ORM;
+- Uso de Flask para el servidor y ORM;
 - Uso de NextJS y tailwindcss;
 
 ## Guía de instalación
