@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard';
 import { useState,useEffect } from 'react';
 
 async function getProducts() {
-  const res = await fetch("http://localhost:8080/api/productos")
+  const res = await fetch("https://adriancespedes.pythonanywhere.com/api/productos")
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary

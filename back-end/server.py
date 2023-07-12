@@ -13,7 +13,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 CORS(app)
-cache = Cache(app, config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 300})
+cache = Cache(app, config={"CACHE_TYPE": "simple",
+              "CACHE_DEFAULT_TIMEOUT": 300})
 db = SQLAlchemy(app)
 
 bcrypt = Bcrypt(app)
@@ -56,7 +57,8 @@ class Venta(db.Model):
     __tablename__ = "venta"
     id = db.Column(db.Integer, primary_key=True)
     cliente_ruc = db.Column(db.String(11), db.ForeignKey("cliente.ruc"))
-    recogedor_asignado_dni = db.Column(db.Integer, db.ForeignKey("recogedor.dni"))
+    recogedor_asignado_dni = db.Column(
+        db.Integer, db.ForeignKey("recogedor.dni"))
     f_creacion = db.Column(db.DateTime)
     f_limite = db.Column(db.DateTime)
     estado = db.Column(db.String(50))
@@ -107,8 +109,10 @@ class Contiene_pr_venta(db.Model):
     cantidad: int
 
     __tablename__ = "contiene_pr_venta"
-    venta_id = db.Column(db.Integer, db.ForeignKey("venta.id"), primary_key=True)
-    producto_id = db.Column(db.Integer, db.ForeignKey("producto.id"), primary_key=True)
+    venta_id = db.Column(db.Integer, db.ForeignKey(
+        "venta.id"), primary_key=True)
+    producto_id = db.Column(db.Integer, db.ForeignKey(
+        "producto.id"), primary_key=True)
     cantidad = db.Column(db.Integer)
 
     def __repr__(self):
@@ -128,7 +132,8 @@ class Producto(db.Model):
     nombre = db.Column(db.String(50))
     precio = db.Column(db.Float)
     descripcion = db.Column(db.String(50))
-    fabricante_nombre = db.Column(db.String(50), db.ForeignKey("fabricante.nombre"))
+    fabricante_nombre = db.Column(
+        db.String(50), db.ForeignKey("fabricante.nombre"))
 
     def __repr__(self):
         return f"<Producto {self.id}>"
@@ -140,7 +145,8 @@ class Categoria_de(db.Model):
     categoria_nombre: str
 
     __tablename__ = "categoria_de"
-    producto_id = db.Column(db.Integer, db.ForeignKey("producto.id"), primary_key=True)
+    producto_id = db.Column(db.Integer, db.ForeignKey(
+        "producto.id"), primary_key=True)
     categoria_nombre = db.Column(
         db.String(50), db.ForeignKey("categoria.nombre"), primary_key=True
     )
@@ -167,7 +173,8 @@ class Stock(db.Model):
     cantidad: int
 
     __tablename__ = "stock"
-    producto_id = db.Column(db.Integer, db.ForeignKey("producto.id"), primary_key=True)
+    producto_id = db.Column(db.Integer, db.ForeignKey(
+        "producto.id"), primary_key=True)
     almacen_numero = db.Column(
         db.Integer, db.ForeignKey("almacen.numero"), primary_key=True
     )
@@ -241,7 +248,8 @@ class Atencion_al_cliente(Empleado):
 
     __tablename__ = "atencion_al_cliente"
 
-    dni = db.Column(db.Integer, db.ForeignKey("empleado.dni"), primary_key=True)
+    dni = db.Column(db.Integer, db.ForeignKey(
+        "empleado.dni"), primary_key=True)
 
     def __repr__(self):
         return f"<Atencion_al_cliente {self.dni}>"
@@ -254,7 +262,8 @@ class Almacenero(Empleado):
 
     __tablename__ = "almacenero"
 
-    dni = db.Column(db.Integer, db.ForeignKey("empleado.dni"), primary_key=True)
+    dni = db.Column(db.Integer, db.ForeignKey(
+        "empleado.dni"), primary_key=True)
     almacen_numero = db.Column(db.Integer, db.ForeignKey("almacen.numero"))
 
     def __repr__(self):
@@ -277,7 +286,8 @@ class Despacho(db.Model):
     atencion_al_cliente_dni = db.Column(
         db.Integer, db.ForeignKey("atencion_al_cliente.dni")
     )
-    recogedor_asignado_dni = db.Column(db.Integer, db.ForeignKey("recogedor.dni"))
+    recogedor_asignado_dni = db.Column(
+        db.Integer, db.ForeignKey("recogedor.dni"))
 
     def __repr__(self):
         return f"<Despacho {self.numero}>"
@@ -310,7 +320,8 @@ class Carrito_de_Compras(db.Model):
     cliente_ruc = db.Column(
         db.String(11), db.ForeignKey("cliente.ruc"), primary_key=True
     )
-    producto_id = db.Column(db.Integer, db.ForeignKey("producto.id"), primary_key=True)
+    producto_id = db.Column(db.Integer, db.ForeignKey(
+        "producto.id"), primary_key=True)
     cantidad = db.Column(db.Integer)
 
     def __repr__(self):
@@ -404,7 +415,8 @@ def route_productos_categoria(categoria):
         if cached_productos_categoria is not None:
             return jsonify(cached_productos_categoria)
         prod = Producto.query.all()
-        cat = Categoria_de.query.filter_by(categoria_nombre=categoria.upper()).all()
+        cat = Categoria_de.query.filter_by(
+            categoria_nombre=categoria.upper()).all()
         productos_cat = []
 
         for pr in prod:
