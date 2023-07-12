@@ -33,9 +33,8 @@ Bueno esta aplicación fue construida con Django para el servidor y hace uso de 
 
 ```bash
 # Instalamos los módulos
-$ pip3 install django
-$ pip3 install djangorestframework
-$ pip3 install django-cors-headers
+$ pip3 install flask
+$ pip3 install ....
 ```
 
 - Segundo Paso: Ahora tenemos que instalar las dependencias para nuestro frontEnd.
@@ -50,13 +49,12 @@ $ npm install
 - Tecer Paso: Correr la aplicación
 
 ```bash
-# En una terminal corres el servidor desde la carpeta raíz del repositorio
-$ python3 manage.py runserver #MISSING SOME PARTS
-# Luego para el frontEnd vamos a la carpeta client
+# En el frontEnd vamos a la carpeta client
 $ npm run dev
 ```
 
-Ya tenemos todo listo, entonces por defecto si ingresas desde tu navegador a `localhost:5173` verás la página de inicio de la aplicación
+Ya tenemos todo listo, entonces por defecto si ingresas desde tu navegador a `localhost:5173` verás la página de inicio de la aplicación,
+cabe mencionar que quien esta hosteado es el servidor.
 
 ## Autores
 
