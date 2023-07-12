@@ -50,6 +50,10 @@ export default function SignupPage() {
         }),
       }
     );
+    // go to login page if success
+    if (res.status === 200) {
+      window.location.href = "/login";
+    }
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen text-center bg-black">
