@@ -1,14 +1,15 @@
 "use client";
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import ruc from "../login/page.js";
 
 function createData(name, precio, cantidad) {
   return { name, precio, cantidad };
@@ -23,47 +24,56 @@ function calcularTotal(data) {
 }
 
 export default function carritoPage() {
-
   const [totalPrice, setTotalPrice] = useState(0);
   const [tableData, setTableData] = useState([]);
-
-  const ruc = "04657384920";
 
   const addElementToTable = (newElement) => {
     setTotalPrice(totalPrice + 1);
   };
 
-  function buy() {
-  }
+  function buy() { }
 
   useEffect(() => {
     // Fecth data from carrito
-    fetch("http://localhost:8080/api/clientes/carrito/04657384920", {
-      method: 'GET',
-    }).then(response => {
-      return response.json();
-    }).then(data => {
-      //Iterate over data and add to table
-      let backData = [];
-      for (let index = 0; index < data.length; index++) {
-        const element = data[index];
-        //console.log(element); 
-        backData = [...backData, createData(element.nombre, element.precio, element.cantidad)];
+    fetch(
+      "https://adriancespedes.pythonanywhere.com/api/clientes/carrito/" + ruc,
+      {
+        method: "GET",
       }
-      setTableData(backData);
-      setTotalPrice(calcularTotal(backData));
-    }).catch(err => {
-      console.log(err);
-    });
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //Iterate over data and add to table
+        let backData = [];
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          //console.log(element);
+          backData = [
+            ...backData,
+            createData(element.nombre, element.precio, element.cantidad),
+          ];
+        }
+        setTableData(backData);
+        setTotalPrice(calcularTotal(backData));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
     <div>
-      <h1 style={{
-        textAlign: "left",
-        padding: "10px",
-        fontSize: "40px",
-      }}>Carrito</h1>
+      <h1
+        style={{
+          textAlign: "left",
+          padding: "10px",
+          fontSize: "40px",
+        }}
+      >
+        Carrito
+      </h1>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -77,7 +87,10 @@ export default function carritoPage() {
           </TableHead>
           <TableBody>
             {tableData.map((row, index) => (
-              <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableRow
+                key={index}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
                 {/* Render table cells for each element */}
                 <TableCell component="th" scope="row">
                   {row.name}
@@ -90,18 +103,34 @@ export default function carritoPage() {
           </TableBody>
         </Table>
       </TableContainer>
-      <h1 style={{
-        paddingRight: "50px",
-        textAlign: "right",
-        fontWeight: "bold",
-        fontSize: "30px",
-      }}>Total: {totalPrice} </h1>
+      <h1
+        style={{
+          paddingRight: "50px",
+          textAlign: "right",
+          fontWeight: "bold",
+          fontSize: "30px",
+        }}
+      >
+        Total: {totalPrice}{" "}
+      </h1>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', paddingRight: "50px", paddingBottom: "5px" }}>
-        <Button onClick={buy} variant="contained" color="primary" style={{ backgroundColor: 'blue', color: 'white' }}>
-          COMPRAR</Button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          paddingRight: "50px",
+          paddingBottom: "5px",
+        }}
+      >
+        <Button
+          onClick={buy}
+          variant="contained"
+          color="primary"
+          style={{ backgroundColor: "blue", color: "white" }}
+        >
+          COMPRAR
+        </Button>
       </div>
-
     </div>
   );
 }

@@ -17,7 +17,7 @@ import Image from "next/image";
 import logo from "../../public/logo.png";
 import Input from "@mui/material/Input";
 import { style } from "@mui/system";
-import Link from 'next/link';
+import Link from "next/link";
 
 const Logito = (props) => (
   <Image
@@ -31,7 +31,7 @@ const Logito = (props) => (
 const links = [
   {
     label: "Escribenos",
-    url: "/contacto",
+    url: "https://instagram.com/",
     img: "https://static.vecteezy.com/system/resources/previews/018/930/486/original/telegram-logo-telegram-icon-transparent-free-png.png",
     styleconfig: {
       width: "100px",
@@ -200,7 +200,10 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link key={setting} href={`/${setting.toLowerCase().replace(/\s+/g, '')}`}>
+                <Link
+                  key={setting}
+                  href={`/${setting.toLowerCase().replace(/\s+/g, "")}`}
+                >
                   <MenuItem onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
@@ -238,7 +241,7 @@ function ResponsiveAppBar() {
           }}
         />
       </Container>
-    </AppBar >
+    </AppBar>
   );
 }
 export default ResponsiveAppBar;
