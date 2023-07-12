@@ -18,6 +18,7 @@ import logo from "../../public/logo.png";
 import Input from "@mui/material/Input";
 import { style } from "@mui/system";
 import Link from 'next/link';
+import {useState, useEffect} from 'react';
 
 const Logito = (props) => (
   <Image
@@ -50,9 +51,28 @@ const links = [
     },
   },
 ];
-const settings = ["Login", "Sign up", "My account"];
+const settings = ["Login", "Sign up", "My account", "Logout"];
 
 function ResponsiveAppBar() {
+
+  let RUC_value
+  if (typeof window !== "undefined") {
+    RUC_value = localStorage.getItem("RUC") || ""
+  }
+
+  const [ruc, setRUC] = useState(RUC_value);
+
+  // set ruc as "bienvenido" if ruc is not ""
+  useEffect(() => {
+    if(RUC_value == ""){
+        setRUC("Bienvenido");
+    } else {
+        setRUC(RUC_value);
+    }
+  }, []);
+
+
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -180,7 +200,7 @@ function ResponsiveAppBar() {
                   alt=""
                   className="w-9 h-9 mr-2"
                 />
-                Bienvenido
+                {ruc}
               </Button>
             </Tooltip>
             <Menu

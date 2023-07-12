@@ -4,6 +4,9 @@ import { useState } from "react";
 import { FaFacebookF, FaGithub, FaGoogle, FaRegEnvelope } from "react-icons/fa";
 import {MdLockOutline} from "react-icons/md";
 
+let RUC_value
+RUC_value = localStorage.getItem("RUC") || ""
+//const [ruc, setRUC] = useState(RUC_value);
 
 export default function LoginPage() {
   const [ruc, setRUC] = useState("");
@@ -36,6 +39,7 @@ const submitHandler = async (e) => {
 
     if(data.check){
         // redirect to home page
+        localStorage.setItem("RUC", ruc);
         window.location.href = '/';
     }else{
       
